@@ -7,11 +7,13 @@ import { AuthInput } from '../components/AuthInput';
 import { useState } from 'react';
 import apiClient from '@/shared/api/apiClient';
 import useAuthStore from '@/shared/store/useAuthStore';
+import useToastStore from '@/shared/store/useToastStore';
 import { Alert, ActivityIndicator } from 'react-native';
 
 export function LoginScreen() {
   const router = useRouter();
   const setAuth = useAuthStore((state) => state.setAuth);
+  const showToast = useToastStore((state) => state.show);
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,7 +21,7 @@ export function LoginScreen() {
 
   const handleLogin = async () => {
     if (!email || !password) {
-      Alert.alert('Error', 'Please fill in all fields');
+      showToast('Vui lòng nhập đầy đủ thông tin đăng nhập', 'warning');
       return;
     }
 
@@ -29,12 +31,12 @@ export function LoginScreen() {
       const { user, token } = response.data;
       
       setAuth(user, token);
-      Alert.alert('Success', 'Logged in successfully');
+      showToast('Đăng nhập hệ thống thành công', 'success');
       router.replace('/(tabs)');
     } catch (error: any) {
       console.error('Login error:', error.response?.data || error.message);
-      const message = error.response?.data?.message || 'Failed to login. Please check your credentials.';
-      Alert.alert('Login Failed', message);
+      const message = error.response?.data?.message || 'Thông tin đăng nhập không chính xác';
+      showToast(message, 'error');
     } finally {
       setLoading(false);
     }

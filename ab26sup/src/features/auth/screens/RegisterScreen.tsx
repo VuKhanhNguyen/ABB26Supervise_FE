@@ -7,10 +7,12 @@ import { AuthInput } from '../components/AuthInput';
 import { useState } from 'react';
 import apiClient from '@/shared/api/apiClient';
 import useAuthStore from '@/shared/store/useAuthStore';
+import useToastStore from '@/shared/store/useToastStore';
 
 export function RegisterScreen() {
   const router = useRouter();
   const setAuth = useAuthStore((state) => state.setAuth);
+  const showToast = useToastStore((state) => state.show);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -20,7 +22,7 @@ export function RegisterScreen() {
 
   const handleRegister = async () => {
     if (!name || !email || !password || !currentOdo) {
-      Alert.alert('Error', 'Please fill in all required fields');
+      showToast('Vui lòng điền đầy đủ các thông tin bắt buộc', 'warning');
       return;
     }
 
@@ -36,12 +38,12 @@ export function RegisterScreen() {
 
       const { user, token } = response.data;
       setAuth(user, token);
-      Alert.alert('Success', 'Account created successfully');
+      showToast('Tạo tài khoản và đăng nhập thành công', 'success');
       router.replace('/(tabs)');
     } catch (error: any) {
       console.error('Register error:', error.response?.data || error.message);
-      const message = error.response?.data?.message || 'Failed to create account.';
-      Alert.alert('Registration Failed', message);
+      const message = error.response?.data?.message || 'Không thể tạo tài khoản. Vui lòng thử lại.';
+      showToast(message, 'error');
     } finally {
       setLoading(false);
     }

@@ -8,6 +8,8 @@ import 'react-native-reanimated';
 import '../global.css';
 import { useColorScheme } from '@/shared/hooks/use-color-scheme';
 
+import { Toast } from '@/shared/components/Toast';
+
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
@@ -55,6 +57,7 @@ export default function RootLayout() {
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
       </Stack>
+      <Toast />
       <StatusBar style="light" />
     </ThemeProvider>
   );

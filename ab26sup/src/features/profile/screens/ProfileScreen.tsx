@@ -1,19 +1,40 @@
-import React, { useCallback } from 'react';
-import { View, Text, ScrollView, Image, TouchableOpacity, ActivityIndicator, RefreshControl } from 'react-native';
+import { Alert, View, Text, ScrollView, Image, TouchableOpacity, ActivityIndicator, RefreshControl } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { TopAppBar } from '@/shared/components/TopAppBar';
 import { MaterialIcons } from '@expo/vector-icons';
 import { SettingMenuItem } from '../components/SettingMenuItem';
 import { useRouter } from 'expo-router';
 import { useProfile } from '../hooks/useProfile';
+import useAuthStore from '@/shared/store/useAuthStore';
+import useToastStore from '@/shared/store/useToastStore';
 
 export function ProfileScreen() {
   const router = useRouter();
   const { user, isLoading, error, refresh } = useProfile();
+  const logout = useAuthStore((state) => state.logout);
+  const showToast = useToastStore((state) => state.show);
 
   const handleLogout = () => {
-    // In a real app, clear tokens here
-    router.replace('/login');
+    Alert.alert(
+      'XÁC NHẬN ĐĂNG XUẤT',
+      'Bạn có chắc chắn muốn đăng xuất khỏi hệ thống AB26 không?',
+      [
+        {
+          text: 'HỦY',
+          style: 'cancel',
+        },
+        {
+          text: 'ĐĂNG XUẤT',
+          style: 'destructive',
+          onPress: () => {
+            logout();
+            showToast('Đã đăng xuất khỏi hệ thống thành công', 'success');
+            router.replace('/login');
+          },
+        },
+      ],
+      { cancelable: true }
+    );
   };
 
   if (isLoading && !user) {
