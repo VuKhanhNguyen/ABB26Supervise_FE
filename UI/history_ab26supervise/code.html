@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#393939",
+                        "outline": "#8b9198",
+                        "surface-container-low": "#1c1b1b",
+                        "on-secondary-fixed-variant": "#005048",
+                        "on-secondary": "#003731",
+                        "surface": "#131313",
+                        "on-background": "#e5e2e1",
+                        "primary-container": "#457b9d",
+                        "tertiary-container": "#dc3240",
+                        "secondary": "#6fd8c8",
+                        "primary-fixed": "#c7e7ff",
+                        "on-error-container": "#ffdad6",
+                        "tertiary": "#ffb3b1",
+                        "primary": "#98cdf2",
+                        "surface-tint": "#98cdf2",
+                        "on-primary-fixed-variant": "#064c6b",
+                        "on-tertiary-container": "#fffdff",
+                        "surface-container-lowest": "#0e0e0e",
+                        "inverse-primary": "#2b6485",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed": "#410007",
+                        "secondary-fixed-dim": "#6fd8c8",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#ffdad8",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary": "#680011",
+                        "surface-variant": "#353534",
+                        "surface-container-high": "#2a2a2a",
+                        "on-surface": "#e5e2e1",
+                        "primary-fixed-dim": "#98cdf2",
+                        "on-primary-container": "#fffdff",
+                        "tertiary-fixed-dim": "#ffb3b1",
+                        "on-surface-variant": "#c1c7ce",
+                        "on-secondary-container": "#00302a",
+                        "secondary-container": "#30a193",
+                        "on-primary-fixed": "#001e2e",
+                        "on-secondary-fixed": "#00201c",
+                        "on-primary": "#00344c",
+                        "error": "#ffb4ab",
+                        "background": "#131313",
+                        "outline-variant": "#41484d",
+                        "surface-container-highest": "#353534",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-container": "#201f1f",
+                        "surface-dim": "#131313",
+                        "secondary-fixed": "#8cf5e4",
+                        "on-tertiary-fixed-variant": "#92001c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #131313;
+            font-family: 'Inter', sans-serif;
+        }
+        .kinetic-gradient {
+            background: linear-gradient(135deg, #98cdf2 0%, #457b9d 100%);
+        }
+        .glass-panel {
+            background: rgba(19, 19, 19, 0.6);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background min-h-screen pb-32 overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-zinc-950/80 backdrop-blur-xl shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-sky-400" data-icon="speed">speed</span>
+<h1 class="font-['Space_Grotesk'] tracking-tighter uppercase text-xl font-bold tracking-widest text-sky-400">AB26 SUPERVISE</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-sky-400 hover:text-sky-300 transition-colors" data-icon="check_circle">check_circle</span>
+</div>
+<div class="absolute bottom-0 left-0 bg-gradient-to-b from-zinc-800 to-transparent h-px w-full"></div>
+</header>
+<main class="mt-20 px-6 max-w-2xl mx-auto">
+<!-- Hero Action Area -->
+<div class="mb-10 flex flex-col items-center">
+<button class="kinetic-gradient text-on-primary w-full py-4 rounded-lg font-bold flex items-center justify-center gap-2 shadow-lg shadow-primary/20 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                Thêm nhật ký bảo dưỡng
+            </button>
+</div>
+<!-- Section Title -->
+<div class="mb-8 flex justify-between items-end border-l-2 border-secondary pl-4">
+<div>
+<p class="font-label text-[10px] tracking-[0.2em] uppercase text-secondary font-bold">Timeline</p>
+<h2 class="font-headline text-2xl font-bold text-on-surface">MAINTENANCE HISTORY</h2>
+</div>
+<div class="text-right">
+<span class="font-headline text-lg font-bold text-primary">04</span>
+<p class="font-label text-[10px] text-outline uppercase">Total Logs</p>
+</div>
+</div>
+<!-- Maintenance Timeline -->
+<div class="relative space-y-8">
+<!-- Timeline Line Decoration -->
+<div class="absolute left-6 top-2 bottom-2 w-px bg-gradient-to-b from-primary via-surface-container-high to-transparent"></div>
+<!-- Log Item 1 -->
+<div class="relative pl-14 group">
+<!-- Timeline Dot -->
+<div class="absolute left-[21px] top-2 w-2 h-2 rounded-full bg-primary ring-4 ring-primary/20 z-10"></div>
+<div class="bg-surface-container rounded-lg p-5 border-t border-primary/20 shadow-xl transition-all hover:bg-surface-container-high">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline text-lg font-semibold text-primary">Engine Oil &amp; Filter</h3>
+<p class="font-label text-[11px] text-outline font-bold tracking-wider">MAR 12, 2024 • 09:45 AM</p>
+</div>
+<div class="text-right">
+<p class="font-headline text-lg font-bold text-on-surface">650,000đ</p>
+<span class="inline-block px-2 py-0.5 rounded bg-secondary-container text-on-secondary text-[10px] font-bold uppercase tracking-tighter">Completed</span>
+</div>
+</div>
+<div class="flex gap-4 items-center mb-4">
+<div class="flex-1 space-y-1">
+<div class="flex justify-between text-xs">
+<span class="text-outline uppercase font-label tracking-widest text-[9px]">ODO Reading</span>
+<span class="text-on-surface font-headline font-medium">12,450 KM</span>
+</div>
+<div class="flex justify-between text-xs">
+<span class="text-outline uppercase font-label tracking-widest text-[9px]">Location</span>
+<span class="text-on-surface font-headline font-medium">Honda Head - District 7</span>
+</div>
+</div>
+<div class="w-16 h-16 rounded-lg bg-surface-container-lowest overflow-hidden border border-outline-variant/30 flex-shrink-0">
+<img alt="Service Receipt" class="w-full h-full object-cover grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer" data-alt="close-up photo of a printed paper receipt with hand-written automotive maintenance details under cool fluorescent lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAv8a2JFWsuKtQF8-3rKaDaa-WsoRX-1dz0fl-ni-19e10_BKJmLnNTyYsHRgkWFcZok_GhPKqN9pS5-oUrykUKv7-BuE4i_vpKvm9rhxOkaMyVc6L0tPzBYT--pbDO-k4wK-maAArhJzooWcPybTt6l1x1MmeggzkmZQxaM6QYRm2cw9rW8OAcYeRbba-H_dn-B3uXFWBwZsGxbD_FmlcBEpxAiyAV3nv7Ww1x2tQCc7rM1o8S8pxWOpE7no36tml32YpNJrhTRA"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Log Item 2 -->
+<div class="relative pl-14 group">
+<div class="absolute left-[21px] top-2 w-2 h-2 rounded-full bg-outline z-10"></div>
+<div class="bg-surface-container-low rounded-lg p-5 transition-all hover:bg-surface-container">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline text-lg font-semibold text-on-surface">Tire Replacement (Rear)</h3>
+<p class="font-label text-[11px] text-outline font-bold tracking-wider">JAN 05, 2024 • 03:20 PM</p>
+</div>
+<div class="text-right">
+<p class="font-headline text-lg font-bold text-on-surface">1,250,000đ</p>
+<span class="inline-block px-2 py-0.5 rounded bg-surface-variant text-on-surface-variant text-[10px] font-bold uppercase tracking-tighter">Logged</span>
+</div>
+</div>
+<div class="flex justify-between text-xs">
+<span class="text-outline uppercase font-label tracking-widest text-[9px]">ODO Reading</span>
+<span class="text-on-surface font-headline font-medium">10,200 KM</span>
+</div>
+</div>
+</div>
+<!-- Log Item 3 -->
+<div class="relative pl-14 group">
+<div class="absolute left-[21px] top-2 w-2 h-2 rounded-full bg-outline z-10"></div>
+<div class="bg-surface-container-low rounded-lg p-5 transition-all hover:bg-surface-container">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline text-lg font-semibold text-on-surface">Brake Fluid Flush</h3>
+<p class="font-label text-[11px] text-outline font-bold tracking-wider">NOV 15, 2023 • 10:15 AM</p>
+</div>
+<div class="text-right">
+<p class="font-headline text-lg font-bold text-on-surface">180,000đ</p>
+</div>
+</div>
+<div class="flex justify-between text-xs">
+<span class="text-outline uppercase font-label tracking-widest text-[9px]">ODO Reading</span>
+<span class="text-on-surface font-headline font-medium">8,850 KM</span>
+</div>
+</div>
+</div>
+<!-- Loading Indicator / End of List -->
+<div class="flex flex-col items-center justify-center py-8 opacity-40">
+<span class="material-symbols-outlined text-3xl mb-2" data-icon="settings_input_component">settings_input_component</span>
+<p class="font-label text-[9px] uppercase tracking-[0.4em]">End of Records</p>
+</div>
+</div>
+<!-- Optional Empty State (Commented out but ready if needed) -->
+<!-- 
+        <div class="flex flex-col items-center justify-center py-20 text-center">
+            <div class="w-24 h-24 rounded-full bg-surface-container flex items-center justify-center mb-6">
+                <span class="material-symbols-outlined text-5xl text-outline-variant" data-icon="inventory_2">inventory_2</span>
+            </div>
+            <h3 class="font-headline text-xl font-bold mb-2">NO LOGS FOUND</h3>
+            <p class="text-outline text-sm mb-8">Start tracking your AB26 maintenance lifecycle by adding your first service record.</p>
+        </div>
+        -->
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-zinc-950/90 backdrop-blur-2xl shadow-[0_-8px_30px_rgba(0,0,0,0.8)]">
+<a class="flex flex-col items-center justify-center text-zinc-600 py-1 px-3 hover:bg-zinc-800/50 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-['Inter'] text-[10px] font-bold tracking-widest uppercase mt-1">DASHBOARD</span>
+</a>
+<a class="flex flex-col items-center justify-center text-sky-400 bg-zinc-900/50 rounded-lg py-1 px-3 border-t-2 border-sky-500 hover:bg-zinc-800/50 transition-all scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="history" style="font-variation-settings: 'FILL' 1;">history</span>
+<span class="font-['Inter'] text-[10px] font-bold tracking-widest uppercase mt-1">HISTORY</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-600 py-1 px-3 hover:bg-zinc-800/50 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="font-['Inter'] text-[10px] font-bold tracking-widest uppercase mt-1">ALERTS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-600 py-1 px-3 hover:bg-zinc-800/50 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Inter'] text-[10px] font-bold tracking-widest uppercase mt-1">PROFILE</span>
+</a>
+<div class="absolute top-0 left-0 w-full h-px bg-zinc-800/50"></div>
+</nav>
+</body></html>

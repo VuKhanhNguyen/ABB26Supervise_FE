@@ -1,0 +1,102 @@
+# AB26Supervise Project Specification & Structure (2026 Standards)
+
+## 1. Technical Stack
+### Frontend (ab26supervise-fe)
+- **Framework:** React Native with Expo (SDK 50+)
+- **Language:** TypeScript
+- **State Management:** Zustand
+- **Navigation:** React Navigation v6 (Bottom Tabs + Stack)
+- **Styling:** NativeWind (Tailwind CSS for React Native)
+- **Network:** Axios with Interceptors for JWT
+- **Image Handling:** Expo Image Picker + Cloudinary SDK
+
+### Backend (ab26supervise-be)
+- **Runtime:** Node.js (v20+)
+- **Framework:** Express.js
+- **Language:** TypeScript
+- **Database:** MongoDB via Mongoose
+- **Authentication:** JWT (Json Web Token) + Argon2/Bcrypt
+- **Storage:** Cloudinary (via Multer & Cloudinary Storage)
+- **Task Scheduling:** Node-cron (for daily ODO interpolation)
+
+---
+
+## 2. Project Directory Structure
+
+### Frontend (`/ab26supervise-fe`)
+```text
+├── src/
+│   ├── api/             # Axios instances and endpoint definitions
+│   ├── components/      # Reusable UI components (Cards, ProgressBars, Buttons)
+│   ├── hooks/           # Custom React hooks (useAuth, useMaintenance)
+│   ├── navigation/      # Tab and Stack navigators
+│   ├── screens/         # Main application screens (Dashboard, History, etc.)
+│   ├── store/           # Zustand state stores
+│   ├── theme/           # Design system tokens and styles
+│   ├── utils/           # Helpers (Formatting, Calculations)
+│   └── App.tsx          # Root entry point
+├── assets/              # Images, Fonts
+├── .env                 # Environment variables (API_URL)
+└── package.json
+```
+
+### Backend (`/ab26supervise-be`)
+```text
+├── src/
+│   ├── config/          # DB connection, Cloudinary config
+│   ├── controllers/     # Request handlers
+│   ├── middleware/      # Auth, Error handling, Upload
+│   ├── models/          # Mongoose schemas (User, MaintenanceLog, etc.)
+│   ├── routes/          # API route definitions
+│   ├── services/        # Business logic (Maintenance logic, Cronjobs)
+│   ├── utils/           # Loggers, JWT helpers
+│   └── index.ts         # Server entry point
+├── .env                 # Secrets (MONGO_URI, JWT_SECRET, CLOUDINARY_*)
+└── package.json
+```
+
+---
+
+## 3. Database Schema (Mongoose)
+
+### User Schema
+```typescript
+{
+  name: { type: String, required: true },
+  email: { type: String, unique: true, required: true },
+  password: { type: String, required: true },
+  avatar: String,
+  current_odo: { type: Number, default: 0 },
+  daily_avg_km: { type: Number, default: 15 },
+  last_odo_update: { type: Date, default: Date.now }
+}
+```
+
+### MaintenanceRule Schema
+```typescript
+{
+  part_name: { type: String, required: true }, // e.g., "Dầu máy", "Lọc gió"
+  interval_km: { type: Number, required: true }, // e.g., 1500
+  description: String
+}
+```
+
+### MaintenanceLog Schema
+```typescript
+{
+  userId: { type: Schema.Types.ObjectId, ref: 'User' },
+  part_name: String,
+  odo_at_service: Number,
+  next_service_odo: Number,
+  cost: Number,
+  receipt_image_url: String,
+  date: { type: Date, default: Date.now }
+}
+```
+
+---
+
+## 4. Backend Logic: ODO Interpolation
+Every night (Cronjob), the system calculates:
+`new_odo = user.current_odo + user.daily_avg_km`
+If `(maintenance_odo - new_odo) < 100`, a notification is triggered.

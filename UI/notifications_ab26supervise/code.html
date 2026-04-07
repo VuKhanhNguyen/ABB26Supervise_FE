@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Inter:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#393939",
+                    "outline": "#8b9198",
+                    "surface-container-low": "#1c1b1b",
+                    "on-secondary-fixed-variant": "#005048",
+                    "on-secondary": "#003731",
+                    "surface": "#131313",
+                    "on-background": "#e5e2e1",
+                    "primary-container": "#457b9d",
+                    "tertiary-container": "#dc3240",
+                    "secondary": "#6fd8c8",
+                    "primary-fixed": "#c7e7ff",
+                    "on-error-container": "#ffdad6",
+                    "tertiary": "#ffb3b1",
+                    "primary": "#98cdf2",
+                    "surface-tint": "#98cdf2",
+                    "on-primary-fixed-variant": "#064c6b",
+                    "on-tertiary-container": "#fffdff",
+                    "surface-container-lowest": "#0e0e0e",
+                    "inverse-primary": "#2b6485",
+                    "on-error": "#690005",
+                    "on-tertiary-fixed": "#410007",
+                    "secondary-fixed-dim": "#6fd8c8",
+                    "error-container": "#93000a",
+                    "tertiary-fixed": "#ffdad8",
+                    "inverse-on-surface": "#313030",
+                    "on-tertiary": "#680011",
+                    "surface-variant": "#353534",
+                    "surface-container-high": "#2a2a2a",
+                    "on-surface": "#e5e2e1",
+                    "primary-fixed-dim": "#98cdf2",
+                    "on-primary-container": "#fffdff",
+                    "tertiary-fixed-dim": "#ffb3b1",
+                    "on-surface-variant": "#c1c7ce",
+                    "on-secondary-container": "#00302a",
+                    "secondary-container": "#30a193",
+                    "on-primary-fixed": "#001e2e",
+                    "on-secondary-fixed": "#00201c",
+                    "on-primary": "#00344c",
+                    "error": "#ffb4ab",
+                    "background": "#131313",
+                    "outline-variant": "#41484d",
+                    "surface-container-highest": "#353534",
+                    "inverse-surface": "#e5e2e1",
+                    "surface-container": "#201f1f",
+                    "surface-dim": "#131313",
+                    "secondary-fixed": "#8cf5e4",
+                    "on-tertiary-fixed-variant": "#92001c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body min-h-screen pb-32 selection:bg-primary/30">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-zinc-950/80 backdrop-blur-xl shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-sky-400" data-icon="speed">speed</span>
+<span class="text-xl font-bold tracking-widest text-sky-400 font-['Space_Grotesk'] tracking-tighter uppercase">AB26 SUPERVISE</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-sky-400 transition-colors hover:text-sky-300" data-icon="check_circle">check_circle</span>
+</div>
+<div class="absolute bottom-0 left-0 bg-gradient-to-b from-zinc-800 to-transparent h-px w-full"></div>
+</header>
+<main class="pt-24 px-4 max-w-2xl mx-auto">
+<!-- Page Header -->
+<div class="mb-8">
+<h1 class="font-headline text-3xl font-bold tracking-tight text-on-surface">Cảnh báo bảo trì</h1>
+<p class="text-on-surface-variant text-sm mt-1 uppercase tracking-widest font-label opacity-70">Maintenance Alerts</p>
+</div>
+<!-- Alert Items Section -->
+<div class="space-y-4">
+<!-- Red Highlight Alert: Filter -->
+<div class="relative group overflow-hidden rounded-lg bg-surface-container border-l-4 border-tertiary-container shadow-[0_10px_40px_rgba(220,50,64,0.15)] transition-all active:scale-95 duration-150">
+<div class="p-5 flex gap-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-lg bg-tertiary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary-container text-2xl animate-pulse" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="font-headline font-bold text-lg text-tertiary-container tracking-tight">Lọc gió quá hạn</h3>
+<span class="text-[10px] font-bold bg-tertiary-container text-on-tertiary-container px-2 py-0.5 rounded uppercase tracking-tighter">Critical</span>
+</div>
+<p class="text-on-surface text-sm mt-1 font-medium">Thay thế lọc gió động cơ ngay lập tức để duy trì hiệu suất.</p>
+<div class="mt-3 flex items-center gap-2">
+<span class="text-xs font-label text-tertiary-container bg-tertiary-container/10 px-2 py-1 rounded-sm border border-tertiary-container/20">quá 20km</span>
+<span class="text-[10px] text-on-surface-variant font-label opacity-60">2 giờ trước</span>
+</div>
+</div>
+</div>
+<!-- Glass Overlay Detail -->
+<div class="absolute inset-0 bg-gradient-to-r from-tertiary-container/5 to-transparent pointer-events-none"></div>
+</div>
+<!-- Standard Alert: Oil -->
+<div class="relative group overflow-hidden rounded-lg bg-surface-container transition-all active:scale-95 duration-150">
+<div class="p-5 flex gap-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-lg bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="oil_barrel" style="font-variation-settings: 'FILL' 1;">oil_barrel</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="font-headline font-bold text-lg text-on-surface tracking-tight">Dầu máy sắp đến hạn</h3>
+<span class="text-[10px] font-bold bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded uppercase tracking-tighter">Reminder</span>
+</div>
+<p class="text-on-surface-variant text-sm mt-1">Lên lịch thay dầu máy định kỳ tại trung tâm dịch vụ gần nhất.</p>
+<div class="mt-3 flex items-center gap-2">
+<span class="text-xs font-label text-primary bg-primary-container/10 px-2 py-1 rounded-sm border border-primary-container/20">còn 85km</span>
+<span class="text-[10px] text-on-surface-variant font-label opacity-60">5 giờ trước</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Info Alert: Coolant -->
+<div class="relative group overflow-hidden rounded-lg bg-surface-container transition-all active:scale-95 duration-150">
+<div class="p-5 flex gap-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-lg bg-secondary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="coolant_temperature" style="font-variation-settings: 'FILL' 1;">thermostat</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="font-headline font-bold text-lg text-on-surface tracking-tight">Nước làm mát ổn định</h3>
+<span class="text-[10px] font-bold bg-secondary-container/20 text-secondary px-2 py-0.5 rounded uppercase tracking-tighter">Healthy</span>
+</div>
+<p class="text-on-surface-variant text-sm mt-1">Hệ thống làm mát hoạt động trong dải nhiệt độ tối ưu.</p>
+<div class="mt-3 flex items-center gap-2">
+<span class="text-xs font-label text-secondary bg-secondary-container/10 px-2 py-1 rounded-sm">System OK</span>
+<span class="text-[10px] text-on-surface-variant font-label opacity-60">1 ngày trước</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Visual Asset Card -->
+<div class="mt-8 rounded-xl overflow-hidden glass-card p-1">
+<div class="relative h-48 rounded-lg overflow-hidden">
+<img alt="maintenance" class="w-full h-full object-cover grayscale opacity-40 mix-blend-luminosity" data-alt="close-up of a high-performance motorcycle engine with glowing blue lighting in a dark futuristic workshop setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAk0fZ_CZFDXhqYsnA8ijY_u-83DlGDC2fltC7WbInyYjcIQN_dT9Z347FcEX_f10nHbqYece9UR-HT1rfsQ-6vuLhLuk4nHPEB5IcChvMYLKKeiVUIdnm3P_XDJY21gGwokI34dffcDGpg6bco62caVxL2RPBJe4q8iBHxLHrQxxvaEP1inayD27jmDDwwuWRHISYEwGlTxaX_txT53F0YlkZu8kxiWzAazLgPLpAIdqBqUclgsU9xfwoRtEXoNuBhjRqv0QyU0w"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<h4 class="font-headline font-bold text-xl text-primary uppercase italic tracking-tighter">Engine Analytics</h4>
+<p class="text-on-surface-variant text-[10px] font-label uppercase tracking-[0.2em]">Real-time hardware monitoring active</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-zinc-950/90 backdrop-blur-2xl shadow-[0_-8px_30px_rgba(0,0,0,0.8)]">
+<!-- DASHBOARD -->
+<a class="flex flex-col items-center justify-center text-zinc-600 py-1 px-3 hover:bg-zinc-800/50 transition-all active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-['Inter'] text-[10px] font-bold tracking-widest uppercase mt-1">DASHBOARD</span>
+</a>
+<!-- HISTORY -->
+<a class="flex flex-col items-center justify-center text-zinc-600 py-1 px-3 hover:bg-zinc-800/50 transition-all active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-['Inter'] text-[10px] font-bold tracking-widest uppercase mt-1">HISTORY</span>
+</a>
+<!-- ALERTS (Active) -->
+<a class="flex flex-col items-center justify-center text-sky-400 bg-zinc-900/50 rounded-lg py-1 px-3 border-t-2 border-sky-500 hover:bg-zinc-800/50 transition-all active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="notifications" style="font-variation-settings: 'FILL' 1;">notifications</span>
+<span class="font-['Inter'] text-[10px] font-bold tracking-widest uppercase mt-1">ALERTS</span>
+</a>
+<!-- PROFILE -->
+<a class="flex flex-col items-center justify-center text-zinc-600 py-1 px-3 hover:bg-zinc-800/50 transition-all active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Inter'] text-[10px] font-bold tracking-widest uppercase mt-1">PROFILE</span>
+</a>
+<!-- Separation Logic Divider -->
+<div class="absolute top-0 left-0 w-full h-[1px] bg-zinc-800/50"></div>
+</nav>
+</body></html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#393939",
+                    "outline": "#8b9198",
+                    "surface-container-low": "#1c1b1b",
+                    "on-secondary-fixed-variant": "#005048",
+                    "on-secondary": "#003731",
+                    "surface": "#131313",
+                    "on-background": "#e5e2e1",
+                    "primary-container": "#457b9d",
+                    "tertiary-container": "#dc3240",
+                    "secondary": "#6fd8c8",
+                    "primary-fixed": "#c7e7ff",
+                    "on-error-container": "#ffdad6",
+                    "tertiary": "#ffb3b1",
+                    "primary": "#98cdf2",
+                    "surface-tint": "#98cdf2",
+                    "on-primary-fixed-variant": "#064c6b",
+                    "on-tertiary-container": "#fffdff",
+                    "surface-container-lowest": "#0e0e0e",
+                    "inverse-primary": "#2b6485",
+                    "on-error": "#690005",
+                    "on-tertiary-fixed": "#410007",
+                    "secondary-fixed-dim": "#6fd8c8",
+                    "error-container": "#93000a",
+                    "tertiary-fixed": "#ffdad8",
+                    "inverse-on-surface": "#313030",
+                    "on-tertiary": "#680011",
+                    "surface-variant": "#353534",
+                    "surface-container-high": "#2a2a2a",
+                    "on-surface": "#e5e2e1",
+                    "primary-fixed-dim": "#98cdf2",
+                    "on-primary-container": "#fffdff",
+                    "tertiary-fixed-dim": "#ffb3b1",
+                    "on-surface-variant": "#c1c7ce",
+                    "on-secondary-container": "#00302a",
+                    "secondary-container": "#30a193",
+                    "on-primary-fixed": "#001e2e",
+                    "on-secondary-fixed": "#00201c",
+                    "on-primary": "#00344c",
+                    "error": "#ffb4ab",
+                    "background": "#131313",
+                    "outline-variant": "#41484d",
+                    "surface-container-highest": "#353534",
+                    "inverse-surface": "#e5e2e1",
+                    "surface-container": "#201f1f",
+                    "surface-dim": "#131313",
+                    "secondary-fixed": "#8cf5e4",
+                    "on-tertiary-fixed-variant": "#92001c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(19, 19, 19, 0.6);
+            backdrop-filter: blur(20px);
+        }
+        .text-glow {
+            text-shadow: 0 0 15px rgba(152, 205, 242, 0.4);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/30 min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-zinc-950/80 backdrop-blur-xl shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-sky-400" data-icon="speed">speed</span>
+<h1 class="text-xl font-bold tracking-widest text-sky-400 font-['Space_Grotesk'] tracking-tighter uppercase">AB26 SUPERVISE</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-zinc-500 hover:text-sky-300 transition-colors cursor-pointer" data-icon="check_circle">check_circle</span>
+</div>
+<div class="absolute bottom-0 left-0 bg-gradient-to-b from-zinc-800 to-transparent h-px w-full"></div>
+</header>
+<main class="pt-24 px-6 max-w-2xl mx-auto">
+<!-- Profile Hero Section -->
+<section class="relative mb-10">
+<div class="flex flex-col items-center">
+<div class="relative p-1 rounded-full bg-gradient-to-tr from-primary to-secondary mb-4 shadow-[0_0_30px_rgba(152,205,242,0.2)]">
+<div class="w-32 h-32 rounded-full overflow-hidden border-4 border-surface">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="Close-up portrait of a high-tech enthusiast wearing a minimalist technical jacket, sharp features, dramatic blue rim lighting, dark studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzIQ7ah_w6hS-PbhjDxVOuMOTCG507WVBWzr9hArdWVAP4d70ZmFbx7_g-wfJHg2XgAk6XndYF6OPNeK0S1UhYkkU_Mu8N2lqbys1guY9gHj-yHjkSNPTBfJeXLLGOMBGFXujJqufyHhwKshAGLC1_VUkzM-hyWUlrD8hOMa6ZNofvfoE63FMYBzUXF0eyM_k3vDS9nmfK4Ha6-d3BacnHDJKMrZhBZ622KxlnL4DAoV9W-osTRDX9qd4wBin0Bxh-ea6U361Eiw"/>
+</div>
+<div class="absolute bottom-1 right-1 bg-secondary text-on-secondary rounded-full p-1 border-2 border-surface">
+<span class="material-symbols-outlined text-[16px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<h2 class="font-headline text-3xl font-bold tracking-tight text-glow">Alex Rivers</h2>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-primary font-headline text-lg font-medium">12,482</span>
+<span class="text-on-surface-variant font-label text-xs tracking-widest uppercase">Total ODO km</span>
+</div>
+</div>
+</section>
+<!-- Bento Stats Grid -->
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="col-span-1 bg-surface-container rounded-xl p-4 flex flex-col justify-between border-t border-primary/10">
+<span class="text-on-surface-variant font-label text-[10px] tracking-[0.2em] uppercase">Daily Avg</span>
+<div class="mt-2">
+<span class="font-headline text-2xl font-bold text-primary">42.8</span>
+<span class="text-on-surface-variant font-body text-sm ml-1">km</span>
+</div>
+</div>
+<div class="col-span-1 bg-surface-container rounded-xl p-4 flex flex-col justify-between border-t border-secondary/10">
+<span class="text-on-surface-variant font-label text-[10px] tracking-[0.2em] uppercase">Rank</span>
+<div class="mt-2">
+<span class="font-headline text-2xl font-bold text-secondary">PRO</span>
+<span class="text-on-surface-variant font-body text-xs block opacity-60">Top 5% Pilots</span>
+</div>
+</div>
+</div>
+<!-- Vehicle Info Section -->
+<section class="mb-10">
+<h3 class="font-headline text-xs font-bold tracking-[0.2em] uppercase text-on-surface-variant mb-4 px-1">Registered Machine</h3>
+<div class="bg-surface-container-low rounded-xl overflow-hidden group">
+<div class="h-40 relative">
+<img alt="Air Blade 2026" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" data-alt="Futuristic black and blue electric racing motorcycle in a dark neon garage with cinematic atmospheric smoke and laser lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfqgyjzY7wG0narZcyLLLRPOVUwQzaiCUqSxrJvMeyVC80dqaeIghOc5RVIeJfr9R73gJuI3cexjJ-v1GSEEjnASGBIAZoKbcVFEBgaWLtJUDR_eKBOf-_tOoEu2T_rkpzc6q6CNj0e5riOkhCtNSZO5HCe8jO4A7Luk9Yj4Z4Pf_cNsxJNX8V67A3vubHEdMIi4GyP1RCMw8uVVQbWQrGriT_SS2rcOrS-ZrZoU8BE2cqTUqdptpcKRo71fB1wY3MQpRccubLXQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<span class="bg-primary/20 text-primary px-2 py-1 rounded text-[10px] font-bold tracking-widest uppercase mb-1 inline-block">Active Unit</span>
+<h4 class="font-headline text-xl font-bold">Air Blade 2026</h4>
+</div>
+</div>
+<div class="p-4 flex justify-between items-center border-t border-outline-variant/10">
+<div class="flex gap-4">
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant font-label uppercase">Firmware</span>
+<span class="text-sm font-medium">v4.2.0-stable</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant font-label uppercase">Engine Health</span>
+<span class="text-sm font-medium text-secondary">Optimal</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="settings_motorcycle">settings</span>
+</div>
+</div>
+</section>
+<!-- Account Settings List -->
+<section class="space-y-3">
+<h3 class="font-headline text-xs font-bold tracking-[0.2em] uppercase text-on-surface-variant mb-4 px-1">Protocol Settings</h3>
+<button class="w-full flex items-center justify-between p-4 bg-surface-container rounded-xl hover:bg-surface-container-high transition-all active:scale-[0.98] duration-150">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="person_edit">person_edit</span>
+</div>
+<span class="font-medium text-sm">Edit Profile</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 bg-surface-container rounded-xl hover:bg-surface-container-high transition-all active:scale-[0.98] duration-150">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="security">security</span>
+</div>
+<span class="font-medium text-sm">Privacy &amp; Security</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 bg-surface-container rounded-xl hover:bg-surface-container-high transition-all active:scale-[0.98] duration-150">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="notifications_active">notifications_active</span>
+</div>
+<span class="font-medium text-sm">Diagnostic Alerts</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+<div class="pt-4">
+<button class="w-full py-4 rounded-xl font-headline text-xs font-bold tracking-[0.2em] uppercase border border-tertiary/20 text-tertiary hover:bg-tertiary/5 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="logout">logout</span>
+                    LOGOUT SYSTEM
+                </button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-zinc-950/90 backdrop-blur-2xl shadow-[0_-8px_30px_rgba(0,0,0,0.8)]">
+<div class="bg-zinc-800/50 absolute top-0 left-0 w-full h-px"></div>
+<a class="flex flex-col items-center justify-center text-zinc-600 py-1 px-3 hover:bg-zinc-800/50 transition-all Active: scale-95 duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span class="font-['Inter'] text-[10px] font-bold tracking-widest uppercase">DASHBOARD</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-600 py-1 px-3 hover:bg-zinc-800/50 transition-all Active: scale-95 duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="history">history</span>
+<span class="font-['Inter'] text-[10px] font-bold tracking-widest uppercase">HISTORY</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-600 py-1 px-3 hover:bg-zinc-800/50 transition-all Active: scale-95 duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="notifications">notifications</span>
+<span class="font-['Inter'] text-[10px] font-bold tracking-widest uppercase">ALERTS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-sky-400 bg-zinc-900/50 rounded-lg py-1 px-3 border-t-2 border-sky-500 transition-all Active: scale-95 duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-['Inter'] text-[10px] font-bold tracking-widest uppercase">PROFILE</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AB26 SUPERVISE - DASHBOARD</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#393939",
+                        "outline": "#8b9198",
+                        "surface-container-low": "#1c1b1b",
+                        "on-secondary-fixed-variant": "#005048",
+                        "on-secondary": "#003731",
+                        "surface": "#131313",
+                        "on-background": "#e5e2e1",
+                        "primary-container": "#457b9d",
+                        "tertiary-container": "#dc3240",
+                        "secondary": "#6fd8c8",
+                        "primary-fixed": "#c7e7ff",
+                        "on-error-container": "#ffdad6",
+                        "tertiary": "#ffb3b1",
+                        "primary": "#98cdf2",
+                        "surface-tint": "#98cdf2",
+                        "on-primary-fixed-variant": "#064c6b",
+                        "on-tertiary-container": "#fffdff",
+                        "surface-container-lowest": "#0e0e0e",
+                        "inverse-primary": "#2b6485",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed": "#410007",
+                        "secondary-fixed-dim": "#6fd8c8",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#ffdad8",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary": "#680011",
+                        "surface-variant": "#353534",
+                        "surface-container-high": "#2a2a2a",
+                        "on-surface": "#e5e2e1",
+                        "primary-fixed-dim": "#98cdf2",
+                        "on-primary-container": "#fffdff",
+                        "tertiary-fixed-dim": "#ffb3b1",
+                        "on-surface-variant": "#c1c7ce",
+                        "on-secondary-container": "#00302a",
+                        "secondary-container": "#30a193",
+                        "on-primary-fixed": "#001e2e",
+                        "on-secondary-fixed": "#00201c",
+                        "on-primary": "#00344c",
+                        "error": "#ffb4ab",
+                        "background": "#131313",
+                        "outline-variant": "#41484d",
+                        "surface-container-highest": "#353534",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-container": "#201f1f",
+                        "surface-dim": "#131313",
+                        "secondary-fixed": "#8cf5e4",
+                        "on-tertiary-fixed-variant": "#92001c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(32, 31, 31, 0.6);
+            backdrop-filter: blur(20px);
+        }
+        .kinetic-gradient {
+            background: linear-gradient(135deg, #98cdf2 0%, #457b9d 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/30">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-zinc-950/80 backdrop-blur-xl shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sky-400">speed</span>
+<h1 class="text-xl font-bold tracking-widest text-sky-400 font-['Space_Grotesk'] uppercase">AB26 SUPERVISE</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-zinc-500 hover:text-sky-300 transition-colors">check_circle</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center border border-outline-variant/20">
+<span class="material-symbols-outlined text-xs">person</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 bg-gradient-to-b from-zinc-800 to-transparent h-px w-full"></div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-lg mx-auto">
+<!-- Hero Section: ODO Update -->
+<section class="mb-10">
+<div class="relative group">
+<button class="w-full kinetic-gradient p-6 rounded-xl flex flex-col items-center justify-center gap-2 shadow-[0_10px_40px_rgba(69,123,157,0.3)] active:scale-[0.98] transition-all overflow-hidden">
+<div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="label-md font-bold tracking-[0.2em] text-on-primary/70 uppercase">Cập nhật ODO hôm nay</span>
+<div class="flex items-baseline gap-1">
+<span class="text-4xl font-headline font-bold text-on-primary tracking-tighter">12,450</span>
+<span class="text-sm font-headline font-medium text-on-primary/80">KM</span>
+</div>
+<div class="mt-4 flex items-center gap-2 px-4 py-2 bg-on-primary/10 rounded-full">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+<span class="text-xs font-bold tracking-widest uppercase">NHẬP CHỈ SỐ MỚI</span>
+</div>
+</button>
+</div>
+</section>
+<!-- Component Status Section -->
+<section>
+<div class="flex justify-between items-end mb-6">
+<h2 class="text-xl font-headline font-bold tracking-tight uppercase text-primary">Tình trạng linh kiện</h2>
+<span class="text-[10px] font-label font-bold tracking-widest text-outline uppercase">Refresh: 2m ago</span>
+</div>
+<div class="space-y-4">
+<!-- Status Card: Dầu Máy -->
+<div class="glass-card p-5 rounded-xl border-t border-white/5 relative overflow-hidden">
+<div class="flex justify-between items-start mb-4">
+<div class="flex flex-col">
+<span class="text-[10px] font-label font-extrabold tracking-[0.15em] text-outline uppercase mb-1">ENGINE OIL</span>
+<h3 class="text-lg font-headline font-semibold text-on-surface">Dầu máy</h3>
+</div>
+<div class="bg-secondary-container/20 px-3 py-1 rounded-lg">
+<span class="text-[10px] font-bold text-secondary tracking-widest uppercase">AN TOÀN</span>
+</div>
+</div>
+<!-- Performance Gauge -->
+<div class="mb-4">
+<div class="flex justify-between text-[10px] font-bold tracking-widest uppercase text-outline-variant mb-2">
+<span>TIẾN ĐỘ THAY THẾ</span>
+<span class="text-secondary">850 / 1500 KM</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full w-[56%] shadow-[0_0_8px_rgba(111,216,200,0.5)]"></div>
+</div>
+</div>
+<div class="flex justify-between items-center bg-surface-container-lowest/50 p-3 rounded-lg">
+<div class="flex flex-col">
+<span class="text-[9px] font-bold text-outline-variant uppercase">Còn lại</span>
+<span class="text-sm font-headline font-bold text-on-surface">650 KM</span>
+</div>
+<div class="h-6 w-px bg-outline-variant/20"></div>
+<div class="flex flex-col text-right">
+<span class="text-[9px] font-bold text-outline-variant uppercase">Kỳ tới</span>
+<span class="text-sm font-headline font-bold text-on-surface">13,100 KM</span>
+</div>
+</div>
+</div>
+<!-- Status Card: Láp -->
+<div class="glass-card p-5 rounded-xl border-t border-white/5 relative overflow-hidden">
+<div class="flex justify-between items-start mb-4">
+<div class="flex flex-col">
+<span class="text-[10px] font-label font-extrabold tracking-[0.15em] text-outline uppercase mb-1">GEAR OIL</span>
+<h3 class="text-lg font-headline font-semibold text-on-surface">Dầu Láp</h3>
+</div>
+<div class="bg-tertiary-container/20 px-3 py-1 rounded-lg animate-pulse">
+<span class="text-[10px] font-bold text-tertiary tracking-widest uppercase">CẢNH BÁO</span>
+</div>
+</div>
+<!-- Performance Gauge -->
+<div class="mb-4">
+<div class="flex justify-between text-[10px] font-bold tracking-widest uppercase text-outline-variant mb-2">
+<span>TIẾN ĐỘ THAY THẾ</span>
+<span class="text-tertiary">4,920 / 5000 KM</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary rounded-full w-[98%] shadow-[0_0_8px_rgba(220,50,64,0.5)]"></div>
+</div>
+</div>
+<div class="flex justify-between items-center bg-surface-container-lowest/50 p-3 rounded-lg">
+<div class="flex flex-col">
+<span class="text-[9px] font-bold text-outline-variant uppercase">Còn lại</span>
+<span class="text-sm font-headline font-bold text-tertiary">80 KM</span>
+</div>
+<div class="h-6 w-px bg-outline-variant/20"></div>
+<div class="flex flex-col text-right">
+<span class="text-[9px] font-bold text-outline-variant uppercase">Kỳ tới</span>
+<span class="text-sm font-headline font-bold text-on-surface">12,530 KM</span>
+</div>
+</div>
+</div>
+<!-- Status Card: Lọc Gió -->
+<div class="glass-card p-5 rounded-xl border-t border-white/5 relative overflow-hidden">
+<div class="flex justify-between items-start mb-4">
+<div class="flex flex-col">
+<span class="text-[10px] font-label font-extrabold tracking-[0.15em] text-outline uppercase mb-1">AIR FILTER</span>
+<h3 class="text-lg font-headline font-semibold text-on-surface">Lọc gió</h3>
+</div>
+<div class="bg-surface-container-high px-3 py-1 rounded-lg">
+<span class="text-[10px] font-bold text-outline tracking-widest uppercase">BÌNH THƯỜNG</span>
+</div>
+</div>
+<!-- Performance Gauge -->
+<div class="mb-4">
+<div class="flex justify-between text-[10px] font-bold tracking-widest uppercase text-outline-variant mb-2">
+<span>TIẾN ĐỘ THAY THẾ</span>
+<span class="text-on-surface">6,200 / 12,000 KM</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full w-[52%] opacity-70"></div>
+</div>
+</div>
+<div class="flex justify-between items-center bg-surface-container-lowest/50 p-3 rounded-lg">
+<div class="flex flex-col">
+<span class="text-[9px] font-bold text-outline-variant uppercase">Còn lại</span>
+<span class="text-sm font-headline font-bold text-on-surface">5,800 KM</span>
+</div>
+<div class="h-6 w-px bg-outline-variant/20"></div>
+<div class="flex flex-col text-right">
+<span class="text-[9px] font-bold text-outline-variant uppercase">Kỳ tới</span>
+<span class="text-sm font-headline font-bold text-on-surface">18,250 KM</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Aesthetic Visual Break -->
+<section class="mt-8">
+<div class="rounded-xl overflow-hidden h-32 relative">
+<img class="w-full h-full object-cover grayscale brightness-50 contrast-125" data-alt="close-up of high-performance motorcycle engine parts with blue neon highlights in a dark carbon fiber garage setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-FV-LhX7Zk-kk2ffJARg-tTffd8lqMl5cI5Cdhd7W8mRa-skZqDcnNy055T2-cRmHCJOg1RrMl1eV0z1xGbJBIYuAR5AKiJcmalREqeTzZMllbTiD5DhvCSHJY57lpwnVrW1BlUp-OBtQ83ZTLIizrLKG1zfOam79pnyULYeJjtBNqgPfrJK8TwOSf1OVxpa3TTX4iOwofmmd9Ba4e0fOIrusqe8hiYxxylLwfMPE816ePLXbPwRq2O-fyADupQ9N0XwfApqTGQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<p class="text-[10px] font-bold tracking-[0.2em] text-primary uppercase">AB26 Performance Series</p>
+<p class="text-xs text-outline italic">Supervision engineered for endurance.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-zinc-950/90 backdrop-blur-2xl shadow-[0_-8px_30px_rgba(0,0,0,0.8)]">
+<div class="bg-zinc-800/50 absolute top-0 left-0 w-full h-px opacity-20"></div>
+<a class="flex flex-col items-center justify-center text-sky-400 bg-zinc-900/50 rounded-lg py-1 px-3 border-t-2 border-sky-500 hover:bg-zinc-800/50 transition-all Active: scale-95 duration-200" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-['Inter'] text-[10px] font-bold tracking-widest uppercase">DASHBOARD</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-600 py-1 px-3 hover:bg-zinc-800/50 transition-all Active: scale-95 duration-200" href="#">
+<span class="material-symbols-outlined mb-1">history</span>
+<span class="font-['Inter'] text-[10px] font-bold tracking-widest uppercase">HISTORY</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-600 py-1 px-3 hover:bg-zinc-800/50 transition-all Active: scale-95 duration-200" href="#">
+<span class="material-symbols-outlined mb-1">notifications</span>
+<span class="font-['Inter'] text-[10px] font-bold tracking-widest uppercase">ALERTS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-600 py-1 px-3 hover:bg-zinc-800/50 transition-all Active: scale-95 duration-200" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-['Inter'] text-[10px] font-bold tracking-widest uppercase">PROFILE</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AB26 SUPERVISE - LOGIN</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#e5e2e1",
+                        "surface-variant": "#353534",
+                        "on-background": "#e5e2e1",
+                        "outline": "#8b9198",
+                        "on-secondary-fixed-variant": "#005048",
+                        "tertiary-fixed-dim": "#ffb3b1",
+                        "surface-tint": "#98cdf2",
+                        "secondary": "#6fd8c8",
+                        "on-tertiary-fixed": "#410007",
+                        "on-tertiary-container": "#fffdff",
+                        "inverse-primary": "#2b6485",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#353534",
+                        "primary": "#98cdf2",
+                        "background": "#131313",
+                        "secondary-fixed": "#8cf5e4",
+                        "tertiary-fixed": "#ffdad8",
+                        "inverse-surface": "#e5e2e1",
+                        "on-secondary": "#003731",
+                        "surface-dim": "#131313",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary-fixed-dim": "#6fd8c8",
+                        "on-primary-container": "#fffdff",
+                        "tertiary-container": "#dc3240",
+                        "surface-container-high": "#2a2a2a",
+                        "primary-container": "#457b9d",
+                        "on-primary": "#00344c",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed-variant": "#92001c",
+                        "surface-container": "#201f1f",
+                        "on-secondary-fixed": "#00201c",
+                        "inverse-on-surface": "#313030",
+                        "primary-fixed": "#c7e7ff",
+                        "on-secondary-container": "#00302a",
+                        "on-primary-fixed-variant": "#064c6b",
+                        "error-container": "#93000a",
+                        "primary-fixed-dim": "#98cdf2",
+                        "outline-variant": "#41484d",
+                        "on-surface-variant": "#c1c7ce",
+                        "on-primary-fixed": "#001e2e",
+                        "tertiary": "#ffb3b1",
+                        "surface-bright": "#393939",
+                        "on-tertiary": "#680011",
+                        "surface": "#131313",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#30a193"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(19, 19, 19, 0.6);
+            backdrop-filter: blur(20px);
+        }
+        .primary-glow:hover {
+            box-shadow: 0 0 20px rgba(152, 205, 242, 0.4);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body selection:bg-primary/30 min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+<!-- Background Decorative Elements (Kinetic Cockpit Aesthetic) -->
+<div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+<div class="absolute top-[-10%] right-[-5%] w-96 h-96 bg-primary/10 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-10%] left-[-5%] w-96 h-96 bg-secondary/5 rounded-full blur-[100px]"></div>
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#131313_70%)]"></div>
+<div class="w-full h-full opacity-10" data-alt="Technical blueprint grid pattern overlay with subtle white lines on a dark carbon background" style="background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 40px 40px;">
+</div>
+</div>
+<!-- Main Content Container -->
+<main class="z-10 w-full max-w-md px-6 py-12 flex flex-col space-y-8">
+<!-- Header Section -->
+<header class="flex flex-col items-center text-center space-y-2">
+<div class="mb-4">
+<span class="material-symbols-outlined text-primary text-5xl" style="font-variation-settings: 'FILL' 1;">
+                    bolt
+                </span>
+</div>
+<h1 class="font-headline text-2xl font-bold tracking-[0.3em] text-primary uppercase">
+                AB26 SUPERVISE
+            </h1>
+<p class="font-label text-on-surface-variant text-xs tracking-widest uppercase">
+                Kinetic Intelligence System v2.0
+            </p>
+</header>
+<!-- Login Card -->
+<section class="glass-panel p-8 rounded-xl border-t border-primary/20 shadow-2xl">
+<form class="space-y-6" onsubmit="return false;">
+<!-- Email Input -->
+<div class="space-y-1.5">
+<label class="font-label text-xs font-bold text-on-surface-variant tracking-wider uppercase flex justify-between" for="email">
+<span>OPERATOR ID</span>
+<span class="text-primary/50 text-[10px]">EMAIL ADDRESS</span>
+</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-on-surface-variant group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">alternate_email</span>
+</div>
+<input class="block w-full pl-10 pr-4 py-3 bg-surface-container-lowest border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-on-surface placeholder:text-outline-variant font-headline transition-all" id="email" placeholder="RIDER_IDENT@AB26.COM" type="email"/>
+</div>
+</div>
+<!-- Password Input -->
+<div class="space-y-1.5">
+<label class="font-label text-xs font-bold text-on-surface-variant tracking-wider uppercase flex justify-between" for="password">
+<span>ENCRYPTION KEY</span>
+<span class="text-primary/50 text-[10px]">PASSWORD</span>
+</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-on-surface-variant group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">lock</span>
+</div>
+<input class="block w-full pl-10 pr-4 py-3 bg-surface-container-lowest border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-on-surface placeholder:text-outline-variant font-headline transition-all" id="password" placeholder="••••••••••••" type="password"/>
+</div>
+</div>
+<!-- Utilities -->
+<div class="flex items-center justify-between">
+<label class="flex items-center space-x-2 cursor-pointer group">
+<input class="w-4 h-4 rounded-sm border-outline-variant bg-surface-container text-primary focus:ring-offset-background focus:ring-primary" type="checkbox"/>
+<span class="font-label text-[10px] text-on-surface-variant group-hover:text-on-surface transition-colors tracking-widest uppercase">REMEMBER SESSION</span>
+</label>
+<a class="font-label text-[10px] text-primary hover:text-primary-container transition-colors tracking-widest uppercase underline decoration-primary/30 underline-offset-4" href="#">
+                        RECOVER ACCESS
+                    </a>
+</div>
+<!-- Action Button -->
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary font-headline font-bold py-4 rounded-lg tracking-[0.2em] uppercase primary-glow transition-all active:scale-95 flex items-center justify-center space-x-3" type="submit">
+<span class="material-symbols-outlined text-xl">login</span>
+<span>INITIATE LOGIN</span>
+</button>
+</form>
+</section>
+<!-- Secondary Actions -->
+<footer class="flex flex-col items-center space-y-6">
+<div class="flex items-center w-full space-x-4">
+<div class="h-[1px] flex-1 bg-gradient-to-r from-transparent to-outline-variant/30"></div>
+<span class="font-label text-[10px] text-outline-variant tracking-widest">OR</span>
+<div class="h-[1px] flex-1 bg-gradient-to-l from-transparent to-outline-variant/30"></div>
+</div>
+<button class="flex items-center space-x-2 group">
+<span class="font-label text-xs text-on-surface-variant tracking-widest uppercase">NEW TO PROTOCOL?</span>
+<span class="font-label text-xs text-secondary group-hover:text-primary transition-colors tracking-widest uppercase font-bold">CREATE AN ACCOUNT</span>
+</button>
+</footer>
+<!-- Diagnostic Metadata -->
+<div class="fixed bottom-6 w-full max-w-md px-6 flex justify-between items-center opacity-30">
+<div class="flex flex-col space-y-0.5">
+<span class="font-label text-[8px] tracking-[0.2em] uppercase">SYSTEM_STABLE</span>
+<span class="font-label text-[8px] tracking-[0.2em] uppercase">LATENCY: 12MS</span>
+</div>
+<div class="flex flex-col items-end space-y-0.5">
+<span class="font-label text-[8px] tracking-[0.2em] uppercase">CORE_2026_A</span>
+<span class="font-label text-[8px] tracking-[0.2em] uppercase text-secondary">ENCRYPTION: AES-256</span>
+</div>
+</div>
+</main>
+<!-- Decorative Corner Accents -->
+<div class="fixed top-6 left-6 w-12 h-12 border-t border-l border-primary/20 opacity-40"></div>
+<div class="fixed top-6 right-6 w-12 h-12 border-t border-r border-primary/20 opacity-40"></div>
+<div class="fixed bottom-24 left-6 w-12 h-12 border-b border-l border-primary/20 opacity-40"></div>
+<div class="fixed bottom-24 right-6 w-12 h-12 border-b border-r border-primary/20 opacity-40"></div>
+</body></html>
