@@ -1,13 +1,17 @@
 import axios from "axios";
 import useAuthStore from "../store/useAuthStore";
 
-// THAY ĐỔI ĐỊA CHỈ IP NẾU CHẠY TRÊN THIẾT BỊ THẬT
-// Cách tìm IP máy tính: Mở CMD -> gõ 'ipconfig' -> Tìm dòng 'IPv4 Address'
-// Ví dụ: const API_URL = 'http://192.168.1.15:5000/api';
-// const API_URL = 'http://10.0.2.2:5000/api'; // Giữ 10.0.2.2 cho Emulator, hãy đổi sang IP máy bạn khi chạy phone thật
-const API_URL = "http://192.168.1.128:5000/api";
+// IP được tự động detect bởi script start-dev.js
+// Chạy: npm run dev (thay vì expo start)
+const API_PORT = 5000;
+const API_HOST = process.env.EXPO_PUBLIC_API_HOST || "192.168.1.30";
+const API_URL = `http://${API_HOST}:${API_PORT}/api`;
+
+console.log("🌐 API URL:", API_URL);
+
 const apiClient = axios.create({
   baseURL: API_URL,
+  timeout: 10000,
   headers: {
     "Content-Type": "application/json",
   },

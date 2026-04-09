@@ -1,8 +1,10 @@
+import React, { useState } from 'react';
 import { Alert, View, Text, ScrollView, Image, TouchableOpacity, ActivityIndicator, RefreshControl } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { TopAppBar } from '@/shared/components/TopAppBar';
 import { MaterialIcons } from '@expo/vector-icons';
 import { SettingMenuItem } from '../components/SettingMenuItem';
+import { VehicleSettingsSheet } from '../components/VehicleSettingsSheet';
 import { useRouter } from 'expo-router';
 import { useProfile } from '../hooks/useProfile';
 import useAuthStore from '@/shared/store/useAuthStore';
@@ -13,6 +15,7 @@ export function ProfileScreen() {
   const { user, isLoading, error, refresh } = useProfile();
   const logout = useAuthStore((state) => state.logout);
   const showToast = useToastStore((state) => state.show);
+  const [vehicleSettingsVisible, setVehicleSettingsVisible] = useState(false);
 
   const handleLogout = () => {
     Alert.alert(
@@ -126,7 +129,13 @@ export function ProfileScreen() {
                   <Text className="text-sm font-medium text-secondary">Tốt</Text>
                 </View>
               </View>
-              <MaterialIcons name="settings" size={24} color="#8b9198" />
+              <TouchableOpacity 
+                onPress={() => setVehicleSettingsVisible(true)}
+                activeOpacity={0.6}
+                style={{ padding: 6, borderRadius: 20, backgroundColor: 'rgba(152, 205, 242, 0.08)' }}
+              >
+                <MaterialIcons name="settings" size={24} color="#8b9198" />
+              </TouchableOpacity>
             </View>
           </TouchableOpacity>
         </View>
@@ -159,6 +168,13 @@ export function ProfileScreen() {
         </View>
 
       </ScrollView>
+
+      {/* Vehicle Settings Bottom Sheet */}
+      <VehicleSettingsSheet 
+        visible={vehicleSettingsVisible} 
+        onClose={() => setVehicleSettingsVisible(false)}
+        vehicleName="Honda Air Blade 2026"
+      />
     </SafeAreaView>
   );
 }
