@@ -34,6 +34,20 @@ export function useMaintenance() {
     }
   }, []);
 
+  const fetchLogById = useCallback(async (id: string) => {
+    try {
+      setIsLoading(true);
+      const response = await apiClient.get<MaintenanceLog>(`/maintenance/${id}`);
+      setError(null);
+      return response.data;
+    } catch (err: any) {
+      setError(err.response?.data?.message || "Failed to fetch log");
+      throw err;
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
   const addLog = useCallback(async (formData: FormData) => {
     try {
       setIsLoading(true);
@@ -54,11 +68,49 @@ export function useMaintenance() {
     }
   }, []);
 
+  const updateLog = useCallback(async (id: string, formData: FormData) => {
+    try {
+      setIsLoading(true);
+      const response = await apiClient.put(`/maintenance/${id}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      setError(null);
+      return response.data;
+    } catch (err: any) {
+      const msg = err.response?.data?.message || "Failed to update maintenance record";
+      setError(msg);
+      throw new Error(msg);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  const deleteLog = useCallback(async (id: string) => {
+    try {
+      setIsLoading(true);
+      await apiClient.delete(`/maintenance/${id}`);
+      setError(null);
+      // Update local history
+      setHistory(prev => prev.filter(log => log._id !== id));
+    } catch (err: any) {
+      const msg = err.response?.data?.message || "Failed to delete maintenance record";
+      setError(msg);
+      throw new Error(msg);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
   return {
     isLoading,
     error,
     history,
     fetchHistory,
+    fetchLogById,
     addLog,
+    updateLog,
+    deleteLog,
   };
 }

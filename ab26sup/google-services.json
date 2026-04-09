@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "547865323019",
+    "project_id": "ab26sup",
+    "storage_bucket": "ab26sup.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:547865323019:android:7db08dbfaeb7e8febe490e",
+        "android_client_info": {
+          "package_name": "com.anonymous.ab26sup"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDOSZH_dBMs60uUgpOYADDh_BioCvra3U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

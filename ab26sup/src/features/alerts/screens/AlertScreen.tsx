@@ -1,10 +1,17 @@
-import React from 'react';
-import { View, Text, ScrollView, Image } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, Text, ScrollView, Image, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { TopAppBar } from '@/shared/components/TopAppBar';
 import { AlertCard } from '../components/AlertCard';
+import { useAlerts } from '../hooks/useAlerts';
 
 export function AlertScreen() {
+  const { alerts, isLoading, error, fetchAlerts, markAsRead } = useAlerts();
+
+  useEffect(() => {
+    fetchAlerts();
+  }, [fetchAlerts]);
+
   return (
     <SafeAreaView className="flex-1 bg-background" edges={['top', 'bottom']}>
       <TopAppBar title="AB26 SUPERVISE" />
@@ -18,35 +25,39 @@ export function AlertScreen() {
           <Text className="text-on-surface-variant text-sm mt-1 uppercase tracking-widest font-bold opacity-70">Maintenance Alerts</Text>
         </View>
 
-        <AlertCard 
-          title="Lọc gió quá hạn"
-          category="Critical"
-          description="Thay thế lọc gió động cơ ngay lập tức để duy trì hiệu suất."
-          tag="quá 20km"
-          timeLabel="2 giờ trước"
-          icon="warning"
-          variant="critical"
-        />
-
-        <AlertCard 
-          title="Dầu máy sắp đến hạn"
-          category="Reminder"
-          description="Lên lịch thay dầu máy định kỳ tại trung tâm dịch vụ gần nhất."
-          tag="còn 85km"
-          timeLabel="5 giờ trước"
-          icon="opacity"
-          variant="reminder"
-        />
-
-        <AlertCard 
-          title="Nước làm mát ổn định"
-          category="Healthy"
-          description="Hệ thống làm mát hoạt động trong dải nhiệt độ tối ưu."
-          tag="System OK"
-          timeLabel="1 ngày trước"
-          icon="thermostat"
-          variant="healthy"
-        />
+        {isLoading ? (
+          <ActivityIndicator size="large" color="#6fd8c8" />
+        ) : error ? (
+          <Text className="text-tertiary-container">{error}</Text>
+        ) : alerts.length === 0 ? (
+          <Text className="text-on-surface-variant">Không có cảnh báo nào.</Text>
+        ) : (
+          alerts.map(alert => (
+            <AlertCard 
+              key={alert._id}
+              title={alert.title}
+              category={alert.category}
+              description={alert.description}
+              tag={alert.tag}
+              timeLabel={new Date(alert.createdAt).toLocaleString('vi-VN', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+              })}
+              icon={alert.icon as any}
+              variant={alert.variant}
+              hasRead={alert.hasRead}
+              onPress={() => {
+                if (!alert.hasRead) {
+                  markAsRead(alert._id);
+                }
+              }}
+            />
+          ))
+        )}
 
         {/* Visual Asset Card */}
         <View className="mt-8 rounded-xl overflow-hidden bg-white/5 p-1">

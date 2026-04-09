@@ -9,6 +9,7 @@ import '../global.css';
 import { useColorScheme } from '@/shared/hooks/use-color-scheme';
 
 import { Toast } from '@/shared/components/Toast';
+import { usePushNotifications } from '@/shared/hooks/usePushNotifications';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -21,6 +22,8 @@ export const unstable_settings = {
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [appIsReady, setAppIsReady] = useState(false);
+  
+  usePushNotifications();
 
   useEffect(() => {
     async function prepare() {

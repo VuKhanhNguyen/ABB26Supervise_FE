@@ -2,7 +2,7 @@ import { create } from 'zustand';
 
 export type ToastType = 'success' | 'error' | 'info' | 'warning';
 
-interface ToastState {
+export interface ToastState {
   visible: boolean;
   message: string;
   type: ToastType;

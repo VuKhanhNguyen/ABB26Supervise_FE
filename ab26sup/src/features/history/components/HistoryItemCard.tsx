@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 
 interface Props {
+  id: string;
   title: string;
   notes?: string;
   date: string;
@@ -11,9 +13,11 @@ interface Props {
   location?: string;
   imageUrl?: string;
   isFirst?: boolean;
+  onEdit?: (id: string) => void;
+  onDelete?: (id: string) => void;
 }
 
-export function HistoryItemCard({ title, notes, date, cost, status, odo, location, imageUrl, isFirst }: Props) {
+export function HistoryItemCard({ id, title, notes, date, cost, status, odo, location, imageUrl, isFirst, onEdit, onDelete }: Props) {
   const isCompleted = status === 'Completed';
 
   return (
@@ -79,6 +83,24 @@ export function HistoryItemCard({ title, notes, date, cost, status, odo, locatio
              <Text className="text-on-surface font-headline font-medium text-xs">{odo}</Text>
            </View>
         )}
+
+        {/* Action Buttons */}
+        <View className="flex-row justify-end mt-4 pt-3 border-t border-outline-variant/10">
+          <TouchableOpacity 
+            onPress={() => onEdit?.(id)}
+            className="flex-row items-center bg-surface-variant/30 px-3 py-1.5 rounded-md mr-2"
+          >
+            <MaterialIcons name="edit" size={14} color="#3079a8" />
+            <Text className="text-primary text-[10px] font-bold ml-1 uppercase">Sửa</Text>
+          </TouchableOpacity>
+          <TouchableOpacity 
+            onPress={() => onDelete?.(id)}
+            className="flex-row items-center bg-error-container/20 px-3 py-1.5 rounded-md"
+          >
+            <MaterialIcons name="delete-outline" size={14} color="#ba1a1a" />
+            <Text className="text-error text-[10px] font-bold ml-1 uppercase">Xóa</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );

@@ -14,16 +14,36 @@ import { HeroOdoCard } from "../components/HeroOdoCard";
 import { ComponentStatusCard } from "../components/ComponentStatusCard";
 import { useDashboard } from "../hooks/useDashboard";
 
+import * as Notifications from 'expo-notifications';
+
 export function DashboardScreen() {
   const { data, isLoading, error, refresh, updateOdo } = useDashboard();
 
   const handleUpdateOdo = async (newOdo: number) => {
     try {
-      await updateOdo(newOdo);
+      const response = await updateOdo(newOdo);
+      
+      // Sau khi cập nhật, kiểm tra xem có linh kiện nào "đỏ" không để báo ngay
+      const latestData = await refresh();
+      const dangerousItems = latestData?.maintenanceItems.filter(item => item.status === 'danger') || [];
+      
+      if (dangerousItems.length > 0) {
+        const firstItem = dangerousItems[0];
+        await Notifications.scheduleNotificationAsync({
+          content: {
+            title: `⚠️ BẢO TRÌ: ${firstItem.title.toUpperCase()}`,
+            body: `Linh kiện đang ở mức báo động (${firstItem.distanceLeft}km nữa). Hãy kiểm tra ngay!`,
+            sound: true,
+            priority: 'max',
+          },
+          trigger: null, // Send immediately
+        });
+      }
     } catch (err: any) {
       Alert.alert("Lỗi", err || "Không thể cập nhật ODO");
     }
   };
+
 
   const getStatusText = (variant: string) => {
     switch (variant) {

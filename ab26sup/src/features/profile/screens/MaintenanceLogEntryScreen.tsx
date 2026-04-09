@@ -30,8 +30,8 @@ const MAINTENANCE_PARTS = [
 
 export function MaintenanceLogEntryScreen() {
   const router = useRouter();
-  const { part, odo } = useLocalSearchParams<{ part?: string; odo?: string }>();
-  const { addLog, isLoading } = useMaintenance();
+  const { part, odo, id } = useLocalSearchParams<{ part?: string; odo?: string; id?: string }>();
+  const { addLog, updateLog, fetchLogById, history, isLoading } = useMaintenance();
 
   const [formData, setFormData] = useState({
     part_name: "",
@@ -42,11 +42,44 @@ export function MaintenanceLogEntryScreen() {
   });
   const [image, setImage] = useState<string | null>(null);
   const [isPickerVisible, setIsPickerVisible] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
 
   useEffect(() => {
-    if (part) setFormData((prev) => ({ ...prev, part_name: part }));
-    if (odo) setFormData((prev) => ({ ...prev, current_odo: odo }));
-  }, [part, odo]);
+    const loadLog = async () => {
+      if (id) {
+        setIsEditMode(true);
+        try {
+          // Try finding in local history first
+          let logData = history.find(log => log._id === id);
+          
+          // If not found in local history (e.g. direct navigation), fetch from server
+          if (!logData) {
+            logData = await fetchLogById(id);
+          }
+
+          if (logData) {
+            setFormData({
+              part_name: logData.part_name,
+              current_odo: logData.odo_at_service.toString(),
+              cost: logData.cost?.toString() || "",
+              location: logData.location || "",
+              notes: logData.notes || "",
+            });
+            if (logData.receipt_image_url) {
+              setImage(logData.receipt_image_url);
+            }
+          }
+        } catch (err) {
+          Alert.alert("Lỗi", "Không thể tải dữ liệu bảo dưỡng");
+        }
+      } else {
+        if (part) setFormData((prev) => ({ ...prev, part_name: part }));
+        if (odo) setFormData((prev) => ({ ...prev, current_odo: odo }));
+      }
+    };
+
+    loadLog();
+  }, [id, part, odo]); // Removed history from dependencies to avoid infinite loops or unnecessary re-fetches
 
   const pickImage = async () => {
     try {
@@ -78,7 +111,9 @@ export function MaintenanceLogEntryScreen() {
       data.append("location", formData.location);
       data.append("notes", formData.notes || "");
 
-      if (image) {
+      // Only append image if it's a local file (newly picked)
+      // Remote URLs (starting with http) shouldn't be re-uploaded as files
+      if (image && !image.startsWith("http")) {
         const filename = image.split("/").pop();
         const match = /\.(\w+)$/.exec(filename || "");
         const type = match ? `image/${match[1]}` : `image`;
@@ -87,10 +122,17 @@ export function MaintenanceLogEntryScreen() {
         data.append("receiptImage", { uri: image, name: filename, type });
       }
 
-      await addLog(data);
-      Alert.alert("Thành công", "Đã lưu nhật ký bảo dưỡng", [
-        { text: "OK", onPress: () => router.replace("/(tabs)") },
-      ]);
+      if (isEditMode && id) {
+        await updateLog(id, data);
+        Alert.alert("Thành công", "Đã cập nhật nhật ký bảo dưỡng", [
+          { text: "OK", onPress: () => router.replace("/(tabs)") },
+        ]);
+      } else {
+        await addLog(data);
+        Alert.alert("Thành công", "Đã lưu nhật ký bảo dưỡng", [
+          { text: "OK", onPress: () => router.replace("/(tabs)") },
+        ]);
+      }
     } catch (err: any) {
       Alert.alert("Lỗi", err.message || "Không thể lưu nhật ký");
     }
@@ -107,7 +149,7 @@ export function MaintenanceLogEntryScreen() {
           <MaterialIcons name="arrow-back" size={24} color="#3079a8" />
         </TouchableOpacity>
         <Text className="text-xl font-bold tracking-[0.2em] text-[#98cdf2] uppercase">
-          GHI NHẬT KÝ
+          {isEditMode ? "SỬA NHẬT KÝ" : "GHI NHẬT KÝ"}
         </Text>
         <View className="w-10" />
       </View>
@@ -118,7 +160,7 @@ export function MaintenanceLogEntryScreen() {
       >
         <View className="p-6 bg-[#201f1f99] rounded-2xl border border-white/5 mb-6">
           <Text className="text-lg font-bold text-on-surface mb-6 font-headline uppercase tracking-tight">
-            Chi tiết bảo dưỡng
+            {isEditMode ? "Chỉnh sửa chi tiết" : "Chi tiết bảo dưỡng"}
           </Text>
 
           {/* Part Selection */}

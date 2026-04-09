@@ -29,12 +29,15 @@ export function useDashboard() {
       const response = await apiClient.get<DashboardData>('/dashboard');
       setData(response.data);
       setError(null);
+      return response.data;
     } catch (err: any) {
       setError(err.response?.data?.message || 'Failed to fetch dashboard data');
+      return null;
     } finally {
       setIsLoading(false);
     }
   }, []);
+
 
   const updateOdo = useCallback(async (odo: number) => {
     try {

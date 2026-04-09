@@ -17,9 +17,13 @@
         "backgroundColor": "#ffffff",
         "foregroundImage": "./assets/images/ab2026.png"
       },
+      "googleServicesFile": "./google-services.json",
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.anonymous.ab26sup"
+      "package": "com.anonymous.ab26sup",
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "output": "static",
@@ -49,6 +53,12 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b27b8c74-7139-46c7-ae48-b3aad4bf6b77"
+      }
+    },
+    "owner": "khanhkhiemton2k4"
   }
 }

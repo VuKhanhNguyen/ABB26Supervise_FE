@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   RefreshControl,
+  Alert,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { TopAppBar } from "@/shared/components/TopAppBar";
@@ -16,7 +17,7 @@ import { useMaintenance } from "../../dashboard/hooks/useMaintenance";
 
 export function HistoryScreen() {
   const router = useRouter();
-  const { history, isLoading, error, fetchHistory } = useMaintenance();
+  const { history, isLoading, error, fetchHistory, deleteLog } = useMaintenance();
 
   useEffect(() => {
     fetchHistory();
@@ -31,8 +32,37 @@ export function HistoryScreen() {
         year: "numeric",
         hour: "2-digit",
         minute: "2-digit",
+        second: "2-digit",
       })
       .toUpperCase();
+  };
+
+  const handleDelete = (id: string) => {
+    Alert.alert(
+      "Xóa nhật ký",
+      "Bạn có chắc chắn muốn xóa bản ghi bảo dưỡng này không?",
+      [
+        { text: "Hủy", style: "cancel" },
+        { 
+          text: "Xóa", 
+          style: "destructive", 
+          onPress: async () => {
+            try {
+              await deleteLog(id);
+            } catch (err: any) {
+              Alert.alert("Lỗi", err.message);
+            }
+          } 
+        },
+      ]
+    );
+  };
+
+  const handleEdit = (id: string) => {
+    router.push({
+      pathname: "/maintenance",
+      params: { id }
+    } as any);
   };
 
   return (
@@ -120,6 +150,7 @@ export function HistoryScreen() {
             history.map((log, index) => (
               <HistoryItemCard
                 key={log._id}
+                id={log._id}
                 isFirst={index === 0}
                 title={log.part_name}
                 notes={log.notes}
@@ -129,6 +160,8 @@ export function HistoryScreen() {
                 odo={`${log.odo_at_service.toLocaleString()} KM`}
                 location={log.location}
                 imageUrl={log.receipt_image_url}
+                onDelete={handleDelete}
+                onEdit={handleEdit}
               />
             ))
           )}
