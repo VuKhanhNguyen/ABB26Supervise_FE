@@ -7,7 +7,7 @@
     "icon": "./assets/images/ab2026.png",
     "scheme": "ab26sup",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": false,
+    "newArchEnabled": true,
     "ios": {
       "supportsTablet": true
     },
