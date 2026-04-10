@@ -45,3 +45,4 @@ app-example
 .vscode/
 ab26sup/*firebase-adminsdk*.json
 # ab26sup/ab26sup-firebase-adminsdk-fbsvc-4ddd9ce49c.json
+.env

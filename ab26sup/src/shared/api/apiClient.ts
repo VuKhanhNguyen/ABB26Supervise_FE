@@ -4,8 +4,11 @@ import useAuthStore from "../store/useAuthStore";
 // IP được tự động detect bởi script start-dev.js
 // Chạy: npm run dev (thay vì expo start)
 const API_PORT = 5000;
-const API_HOST = process.env.EXPO_PUBLIC_API_HOST || "192.168.1.30";
-const API_URL = `http://${API_HOST}:${API_PORT}/api`;
+const DEFAULT_HOST = "192.168.1.30";
+const API_HOST = process.env.EXPO_PUBLIC_API_HOST || DEFAULT_HOST;
+
+// Ưu tiên dùng biến URL đầy đủ (cho Render), nếu không thì ghép IP (cho Local)
+const API_URL = process.env.EXPO_PUBLIC_API_URL || `http://${API_HOST}:${API_PORT}/api`;
 
 console.log("🌐 API URL:", API_URL);
 
