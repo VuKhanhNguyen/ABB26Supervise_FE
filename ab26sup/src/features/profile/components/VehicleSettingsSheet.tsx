@@ -3,6 +3,8 @@ import { View, Text, TouchableOpacity, Modal, Pressable, Dimensions, Alert, Text
 import { MaterialIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import useToastStore from '@/shared/store/useToastStore';
+import { useProfile } from '../hooks/useProfile';
+import useAlertStore from '@/shared/store/useAlertStore';
 import Animated, { 
   useSharedValue, 
   useAnimatedStyle, 
@@ -31,7 +33,9 @@ interface Props {
 export function VehicleSettingsSheet({ visible, onClose, vehicleName = 'Honda Air Blade 2026' }: Props) {
   const router = useRouter();
   const showToast = useToastStore(state => state.show);
-  
+  const { user, updateProfile, refresh: refreshProfile } = useProfile();
+  const fetchAlerts = useAlertStore(state => state.fetchAlerts);
+
   const translateY = useSharedValue(SCREEN_HEIGHT);
   const backdropOpacity = useSharedValue(0);
 
@@ -40,15 +44,29 @@ export function VehicleSettingsSheet({ visible, onClose, vehicleName = 'Honda Ai
 
   const closePrompt = () => setPromptConfig(null);
 
-  const handleSavePrompt = () => {
+  const handleSavePrompt = async () => {
     if (!promptConfig) return;
-    if (promptConfig.type === 'rename') {
-      showToast(`Đã đổi tên xe thành "${promptConfig.value}"`, 'success');
-    } else {
-      showToast(`Đã cập nhật ODO thành ${promptConfig.value} km`, 'success');
+    
+    try {
+      if (promptConfig.type === 'rename') {
+        const formData = new FormData();
+        formData.append('name', promptConfig.value);
+        await updateProfile(formData);
+        showToast(`Đã đổi tên xe thành "${promptConfig.value}"`, 'success');
+      } else {
+        const formData = new FormData();
+        formData.append('current_odo', promptConfig.value);
+        await updateProfile(formData);
+        showToast(`Đã cập nhật ODO thành ${promptConfig.value} km`, 'success');
+        
+        // Refresh alerts immediately after ODO update
+        fetchAlerts();
+      }
+      closePrompt();
+      handleClose();
+    } catch (err: any) {
+      showToast(err.message || 'Lỗi khi cập nhật thông tin', 'error');
     }
-    closePrompt();
-    handleClose();
   };
 
   useEffect(() => {

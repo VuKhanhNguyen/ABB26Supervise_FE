@@ -5,6 +5,7 @@ import * as Notifications from "expo-notifications";
 import Constants from "expo-constants";
 import apiClient from "@/shared/api/apiClient";
 import useAuthStore from "../store/useAuthStore";
+import useAlertStore from "../store/useAlertStore";
 
 export interface PushNotificationState {
   expoPushToken: string | null;
@@ -106,6 +107,8 @@ export const usePushNotifications = (): PushNotificationState => {
     notificationListener.current =
       Notifications.addNotificationReceivedListener((notification) => {
         setNotification(notification);
+        // Refresh alerts when a notification is received
+        useAlertStore.getState().fetchAlerts();
       });
 
     responseListener.current =

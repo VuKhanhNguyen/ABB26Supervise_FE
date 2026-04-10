@@ -24,10 +24,20 @@ export function ComponentStatusCard({
   distanceLeft,
   nextDistance,
 }: Props) {
-  const router = useRouter();
   const isDanger = statusVariant === 'danger';
   const isWarning = statusVariant === 'warning';
   const isSafe = statusVariant === 'safe';
+  
+  const handleMaintenancePress = () => {
+    try {
+      // Use router.push only when explicitly pressed to ensure context is valid
+      // Note: In some versions of Expo Router, you can use local href or import router directly
+      const { router } = require('expo-router');
+      router.push({ pathname: '/maintenance', params: { part: title } });
+    } catch (e) {
+      console.warn("Navigation failed:", e);
+    }
+  };
 
   // Status colors
   const statusBg = isDanger 
@@ -107,8 +117,8 @@ export function ComponentStatusCard({
         
         {(isDanger || isWarning) && (
           <TouchableOpacity 
-            onPress={() => router.push({ pathname: '/maintenance', params: { part: title } })}
-            className="bg-[#457b9d]/30 px-4 py-2 rounded-lg flex-row items-center border border-[#457b9d]/50"
+            onPress={handleMaintenancePress}
+            className="bg-[#457b9d]/30 px-4 py-2 rounded-xl flex-row items-center border border-[#457b9d]/50"
           >
             <MaterialIcons name="edit" size={12} color="#ffffff" />
             <Text className="text-[10px] font-bold text-white uppercase ml-1.5 tracking-tighter">BẢO TRÌ</Text>

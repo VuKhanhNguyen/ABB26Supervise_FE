@@ -17,6 +17,7 @@ export function LoginScreen() {
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [rememberMe, setRememberMe] = useState(true);
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async () => {
@@ -30,7 +31,7 @@ export function LoginScreen() {
       const response = await apiClient.post('/auth/login', { email, password });
       const { user, token } = response.data;
       
-      setAuth(user, token);
+      setAuth(user, token, rememberMe);
       showToast('Đăng nhập hệ thống thành công', 'success');
       router.replace('/(tabs)');
     } catch (error: any) {
@@ -85,11 +86,15 @@ export function LoginScreen() {
           />
 
           <View className="flex-row justify-between items-center mb-6 mt-2">
-            <TouchableOpacity className="flex-row items-center">
-              <View className="w-4 h-4 border border-outline-variant rounded-sm bg-surface-container" />
+            <TouchableOpacity 
+              onPress={() => setRememberMe(!rememberMe)}
+              className="flex-row items-center">
+              <View className={`w-4 h-4 border border-outline-variant rounded-sm items-center justify-center ${rememberMe ? 'bg-primary border-primary' : 'bg-surface-container'}`}>
+                {rememberMe && <MaterialIcons name="check" size={12} color="#00344c" />}
+              </View>
               <Text className="text-[10px] text-on-surface-variant tracking-widest uppercase ml-2">REMEMBER SESSION</Text>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => router.push('/recover-access' as any)}>
               <Text className="text-[10px] text-primary tracking-widest uppercase underline">RECOVER ACCESS</Text>
             </TouchableOpacity>
           </View>

@@ -88,17 +88,10 @@ export function HistoryItemCard({ id, title, notes, date, cost, status, odo, loc
         <View className="flex-row justify-end mt-4 pt-3 border-t border-outline-variant/10">
           <TouchableOpacity 
             onPress={() => onEdit?.(id)}
-            className="flex-row items-center bg-surface-variant/30 px-3 py-1.5 rounded-md mr-2"
+            className="flex-row items-center bg-surface-variant/30 px-3 py-1.5 rounded-md"
           >
             <MaterialIcons name="edit" size={14} color="#3079a8" />
-            <Text className="text-primary text-[10px] font-bold ml-1 uppercase">Sửa</Text>
-          </TouchableOpacity>
-          <TouchableOpacity 
-            onPress={() => onDelete?.(id)}
-            className="flex-row items-center bg-error-container/20 px-3 py-1.5 rounded-md"
-          >
-            <MaterialIcons name="delete-outline" size={14} color="#ba1a1a" />
-            <Text className="text-error text-[10px] font-bold ml-1 uppercase">Xóa</Text>
+            <Text className="text-primary text-[10px] font-bold ml-1 uppercase">Sửa thông tin</Text>
           </TouchableOpacity>
         </View>
       </View>

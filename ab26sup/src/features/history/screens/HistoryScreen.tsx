@@ -12,11 +12,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { TopAppBar } from "@/shared/components/TopAppBar";
 import { MaterialIcons, Ionicons } from "@expo/vector-icons";
 import { HistoryItemCard } from "../components/HistoryItemCard";
-import { useRouter } from "expo-router";
 import { useMaintenance } from "../../dashboard/hooks/useMaintenance";
 
 export function HistoryScreen() {
-  const router = useRouter();
   const { history, isLoading, error, fetchHistory, deleteLog } = useMaintenance();
 
   useEffect(() => {
@@ -37,28 +35,9 @@ export function HistoryScreen() {
       .toUpperCase();
   };
 
-  const handleDelete = (id: string) => {
-    Alert.alert(
-      "Xóa nhật ký",
-      "Bạn có chắc chắn muốn xóa bản ghi bảo dưỡng này không?",
-      [
-        { text: "Hủy", style: "cancel" },
-        { 
-          text: "Xóa", 
-          style: "destructive", 
-          onPress: async () => {
-            try {
-              await deleteLog(id);
-            } catch (err: any) {
-              Alert.alert("Lỗi", err.message);
-            }
-          } 
-        },
-      ]
-    );
-  };
 
   const handleEdit = (id: string) => {
+    const { router } = require('expo-router');
     router.push({
       pathname: "/maintenance",
       params: { id }
@@ -88,7 +67,10 @@ export function HistoryScreen() {
         <View className="mb-10 w-full">
           <TouchableOpacity
             className="bg-primary w-full py-4 rounded-xl flex-row items-center justify-center shadow-lg active:scale-95 transition-all"
-            onPress={() => router.push("/maintenance")}
+            onPress={() => {
+              const { router } = require('expo-router');
+              router.push("/maintenance");
+            }}
           >
             <MaterialIcons name="add-circle" size={20} color="#fff" />
             <Text className="text-on-primary font-bold ml-2 uppercase tracking-widest">
@@ -160,7 +142,6 @@ export function HistoryScreen() {
                 odo={`${log.odo_at_service.toLocaleString()} KM`}
                 location={log.location}
                 imageUrl={log.receipt_image_url}
-                onDelete={handleDelete}
                 onEdit={handleEdit}
               />
             ))
